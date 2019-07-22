@@ -2,20 +2,17 @@
     <div>
         <hr>
         <div>
-            总数为： {{sentCountSum}}
+            总数为： {{sum}}
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        props: ['sentCountSum'],
-        data() {
-            return {
-                // totalCount: ''
+        computed: {
+            sum () {
+                return this.$store.state.counterSum;
             }
-        },
-        methods: {
         }
     }
 </script>

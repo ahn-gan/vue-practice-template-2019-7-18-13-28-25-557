@@ -9,7 +9,7 @@
         </div>
         <hr size="3">
         <counter v-for="(item, index) in inputCount" :key="index" class="counter-margin" @childEvent="getSubCount" @destroySub="destroySubSum"></counter>
-        <counter-sum :sentCountSum="countSum"></counter-sum>
+        <counter-sum></counter-sum>
     </div>
 </template>
 
@@ -31,9 +31,11 @@
         methods: {
             getSubCount(subCount) {
                 this.countSum += subCount;
+                this.$store.commit('setCounterSum', this.countSum);
             },
             destroySubSum(subSum) {
                 this.countSum -= subSum;
+                this.$store.commit('setCounterSum', this.countSum);
             }
         },
         watch: {
